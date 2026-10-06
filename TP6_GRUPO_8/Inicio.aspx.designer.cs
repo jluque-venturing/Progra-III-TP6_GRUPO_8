@@ -11,7 +11,7 @@ namespace TP6_GRUPO_8
 {
 
 
-    public partial class ejercicio1
+    public partial class Inicio
     {
 
         /// <summary>

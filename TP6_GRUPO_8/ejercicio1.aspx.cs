@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TP6_GRUPO_8
 {
-    public partial class ejercicio11 : System.Web.UI.Page
+    public partial class ejercicio1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
