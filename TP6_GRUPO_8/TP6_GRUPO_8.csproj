@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion\AccesoDatos.cs" />
+    <Compile Include="Conexion\GestionProductos.cs" />
     <Compile Include="ejercicio1.aspx.cs">
       <DependentUpon>ejercicio1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
