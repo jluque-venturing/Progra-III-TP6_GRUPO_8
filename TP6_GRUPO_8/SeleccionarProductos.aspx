@@ -4,117 +4,59 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-        }
-
-        .auto-style2 {
-            width: 405px;
-        }
-
-        .auto-style3 {
-            width: 316px;
-        }
-
-        .auto-style4 {
-            height: 42px;
-        }
-
-        .auto-style5 {
-            width: 405px;
-            height: 42px;
-        }
-
-        .auto-style6 {
-            width: 316px;
-            height: 42px;
-        }
-
-        .auto-style10 {
-            height: 11px;
-        }
-
-        .auto-style11 {
-            width: 405px;
-            height: 11px;
-        }
-
-        .auto-style12 {
-            width: 316px;
-            height: 11px;
-        }
-
-        .auto-style13 {
-            height: 35px;
-        }
-
-        .auto-style14 {
-            width: 405px;
-            height: 35px;
-        }
-
-        .auto-style15 {
-            width: 316px;
-            height: 35px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+    <div>
 
-            <br />
+        <asp:GridView ID="gvSeleccion" runat="server" AutoGenerateColumns="False">
+            <Columns>
 
-        </div>
-        <table class="auto-style1">
-            <tr>
-                <td class="auto-style10"></td>
-                <td class="auto-style11">
-                    <asp:GridView ID="gvSeleccion" runat="server" AutoGenerateColumns="False">
-                        <Columns>
-                            <asp:BoundField DataField="IdProducto" HeaderText="Id Producto" />
-                            <asp:BoundField DataField="NombreProducto" HeaderText="Nombre Producto" />
-                            <asp:BoundField DataField="IdProveedor" HeaderText="Id Proveedor" />
-                            <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio Unitario" />
-                        </Columns>
-                    </asp:GridView>
+                <asp:TemplateField HeaderText="Id Producto">
+                    <ItemTemplate>
+                        <asp:Label ID="lblIdProducto" runat="server"
+                            Text='<%# Bind("IdProducto") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
 
-                </td>
-                <td class="auto-style12"></td>
-                <td class="auto-style10"></td>
-            </tr>
-            <tr>
-                <td class="auto-style13"></td>
-                <td class="auto-style14"></td>
-                <td class="auto-style15"></td>
-                <td class="auto-style13"></td>
-            </tr>
-            <tr>
-                <td class="auto-style4"></td>
-                <td class="auto-style5">
+                <asp:TemplateField HeaderText="Nombre Producto">
+                    <ItemTemplate>
+                        <asp:Label ID="lblNombreProducto" runat="server"
+                            Text='<%# Bind("NombreProducto") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
 
-                    <asp:Label ID="lblAgregados" runat="server" Text=""></asp:Label>
+                <asp:TemplateField HeaderText="Id Proveedor">
+                    <ItemTemplate>
+                        <asp:Label ID="lblIdProveedor" runat="server"
+                            Text='<%# Bind("IdProveedor") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
 
-                </td>
-                <td class="auto-style6"></td>
-                <td class="auto-style4">
+                <asp:TemplateField HeaderText="Precio Unitario">
+                    <ItemTemplate>
+                        <asp:Label ID="lblPrecioUnidad" runat="server"
+                            Text='<%# Bind("PrecioUnidad") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
 
-                    <asp:HyperLink ID="hlVolver" runat="server"
-                        NavigateUrl="~/Ejercicio2.aspx"
-                        Text="Volver al Inicio">
-                    </asp:HyperLink>
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
-    </form>
+            </Columns>
+        </asp:GridView>
+
+        <br />
+
+        <asp:Label ID="lblAgregados" runat="server"></asp:Label>
+
+        <br /><br />
+
+        <asp:HyperLink ID="hlVolver" runat="server"
+            NavigateUrl="~/Ejercicio2.aspx">
+            Volver al Inicio
+        </asp:HyperLink>
+
+    </div>
+</form>
 </body>
 </html>
