@@ -37,5 +37,15 @@ namespace TP6_GRUPO_8
 
             gvSeleccion.DataBind();
         }
+
+        protected void gvSeleccion_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow fila = gvSeleccion.Rows[e.NewSelectedIndex];
+
+            int idProducto = int.Parse(((Label)fila.FindControl("lblIdProducto")).Text);
+            string nombreProducto = ((Label)fila.FindControl("lblNombreProducto")).Text;
+            int idProveedor = int.Parse(((Label)fila.FindControl("lblIdProveedor")).Text);
+            decimal precio = decimal.Parse(((Label)fila.FindControl("lblPrecioUnidad")).Text);
+        }
     }
 }

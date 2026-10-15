@@ -12,8 +12,10 @@
         <div>
 
             <asp:GridView ID="gvSeleccion" runat="server" AutoGenerateColumns="False"
-                AllowPaging="True" PageSize="14" OnPageIndexChanging="gvSeleccion_PageIndexChanging">
+                AllowPaging="True" PageSize="14" OnPageIndexChanging="gvSeleccion_PageIndexChanging" OnSelectedIndexChanging="gvSeleccion_SelectedIndexChanging">
                 <Columns>
+
+                    <asp:CommandField ShowSelectButton="True" />
 
                     <asp:TemplateField HeaderText="Id Producto">
                         <ItemTemplate>
