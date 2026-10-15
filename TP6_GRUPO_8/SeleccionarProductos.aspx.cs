@@ -23,5 +23,19 @@ namespace TP6_GRUPO_8
                 gvSeleccion.DataBind();
             }
         }
+
+        // Cambia la pagina actual de la grilla de productos. 
+        protected void gvSeleccion_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvSeleccion.PageIndex = e.NewPageIndex;
+
+            GestionProductos gestion = new GestionProductos();
+
+            gvSeleccion.DataSource = gestion.ObtenerTabla(
+                "Productos",
+                "SELECT IdProducto, NombreProducto, IdProveedor, PrecioUnidad FROM Productos");
+
+            gvSeleccion.DataBind();
+        }
     }
 }
