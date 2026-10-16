@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -22,6 +23,31 @@ namespace TP6_GRUPO_8
 
                 gvSeleccion.DataBind();
             }
+        }
+        private DataTable CrearTablaSeleccionados()
+        {
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("IdProducto", typeof(int));
+            dt.Columns.Add("NombreProducto", typeof(string));
+            dt.Columns.Add("IdProveedor", typeof(int));
+            dt.Columns.Add("PrecioUnidad", typeof(decimal));
+
+            return dt;
+        }
+
+        private DataTable AgregarFila(DataTable tabla, int idProducto, string nombre, int idProveedor, decimal precio)
+        {
+            DataRow fila = tabla.NewRow();
+
+            fila["IdProducto"] = idProducto;
+            fila["NombreProducto"] = nombre;
+            fila["IdProveedor"] = idProveedor;
+            fila["PrecioUnidad"] = precio;
+
+            tabla.Rows.Add(fila);
+
+            return tabla;
         }
 
         // Cambia la pagina actual de la grilla de productos. 
@@ -46,6 +72,22 @@ namespace TP6_GRUPO_8
             string nombreProducto = ((Label)fila.FindControl("lblNombreProducto")).Text;
             int idProveedor = int.Parse(((Label)fila.FindControl("lblIdProveedor")).Text);
             decimal precio = decimal.Parse(((Label)fila.FindControl("lblPrecioUnidad")).Text);
+
+            if (Session["ProductosSeleccionados"] == null)
+            {
+                Session["ProductosSeleccionados"] = CrearTablaSeleccionados();
+            }
+
+            DataTable tabla = (DataTable)Session["ProductosSeleccionados"];
+
+            tabla = AgregarFila(
+                tabla,
+                idProducto,
+                nombreProducto,
+                idProveedor,
+                precio);
+
+            Session["ProductosSeleccionados"] = tabla;
         }
     }
 }
