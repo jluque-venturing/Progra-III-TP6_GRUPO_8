@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="gvProductos" runat="server" AutoGenerateColumns="False">
+            <asp:GridView ID="gvProductos" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="10" OnPageIndexChanging="gvProductos_PageIndexChanging">
                 <Columns>
                     <asp:TemplateField HeaderText="Id Producto">
                         <ItemTemplate>

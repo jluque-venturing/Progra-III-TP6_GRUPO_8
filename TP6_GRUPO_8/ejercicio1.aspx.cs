@@ -19,5 +19,11 @@ namespace TP6_GRUPO_8
             }
         }
 
+        protected void gvProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvProductos.PageIndex = e.NewPageIndex;
+            gvProductos.DataSource = new GestionProductos().ObtenerTodosLosProductos();
+            gvProductos.DataBind();
+        }
     }
 }
