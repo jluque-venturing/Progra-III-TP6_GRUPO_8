@@ -88,6 +88,15 @@ namespace TP6_GRUPO_8
                 precio);
 
             Session["ProductosSeleccionados"] = tabla;
+
+            if (lblAgregados.Text == string.Empty)
+            {
+                lblAgregados.Text = "Productos agregados: " + nombreProducto;
+            }
+            else
+            {
+                lblAgregados.Text += ", " + nombreProducto;
+            }
         }
     }
 }
