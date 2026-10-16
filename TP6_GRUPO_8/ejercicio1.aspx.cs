@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TP6_GRUPO_8.Conexion;
 
 namespace TP6_GRUPO_8
 {
@@ -11,7 +12,12 @@ namespace TP6_GRUPO_8
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                gvProductos.DataSource = new GestionProductos().ObtenerTodosLosProductos();
+                gvProductos.DataBind();
+            }
         }
+
     }
 }
