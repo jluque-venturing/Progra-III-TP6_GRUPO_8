@@ -10,13 +10,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="gvProductos" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="10" OnPageIndexChanging="gvProductos_PageIndexChanging">
+            <asp:GridView ID="gvProductos" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="10" OnPageIndexChanging="gvProductos_PageIndexChanging" OnRowDeleting="gvProductos_RowDeleting">
                 <Columns>
-                    <asp:TemplateField HeaderText="Id Producto">
+                   <asp:CommandField ShowDeleteButton="True" DeleteText="Delete " />
+                    <asp:TemplateField HeaderText="Id Producto">                        
                         <ItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("IdProducto") %>'></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField>
+                   </asp:TemplateField>
                     <asp:TemplateField HeaderText="Nombre Producto">
                         <ItemTemplate>
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("NombreProducto") %>'></asp:Label>

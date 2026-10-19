@@ -25,5 +25,21 @@ namespace TP6_GRUPO_8
             gvProductos.DataSource = new GestionProductos().ObtenerTodosLosProductos();
             gvProductos.DataBind();
         }
+
+        protected void gvProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            Label lblIdProducto = (Label)gvProductos.Rows[e.RowIndex].FindControl("Label1");
+
+            int idProducto = int.Parse(lblIdProducto.Text);
+
+            GestionProductos gestion = new GestionProductos();
+            gestion.EliminarProductos(idProducto);
+
+
+            e.Cancel = true;
+
+            gvProductos.DataSource = gestion.ObtenerTodosLosProductos();
+            gvProductos.DataBind();
+        }
     }
 }

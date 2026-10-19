@@ -18,5 +18,21 @@ namespace TP6_GRUPO_8.Conexion
         {
             return ObtenerTabla("Productos", "SELECT IdProducto, NombreProducto, CantidadPorUnidad, PrecioUnidad FROM Productos");
         }
+    
+
+    public bool EliminarProductos(int idProducto)
+        {
+
+            SqlCommand comando = new SqlCommand();
+            SqlParameter sqlparametro = new SqlParameter("@idProducto", idProducto);
+            comando.Parameters.Add(sqlparametro);
+
+            AccesoDatos datos = new AccesoDatos();
+
+            int filasAfectadas = datos.EjecutarProcedimientoAlmacenado(comando, "SP_EliminarProducto");
+
+            return filasAfectadas > 0;
+
+        }
     }
 }
