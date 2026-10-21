@@ -15,6 +15,8 @@ namespace TP6_GRUPO_8
         {
             if (!IsPostBack)
             {
+                lblAgregados.Text = string.Empty;
+
                 GestionProductos gestion = new GestionProductos();
 
                 gvSeleccion.DataSource = gestion.ObtenerTabla(

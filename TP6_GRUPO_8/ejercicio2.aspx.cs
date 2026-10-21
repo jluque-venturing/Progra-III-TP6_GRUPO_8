@@ -17,7 +17,7 @@ namespace TP6_GRUPO_8
 
         protected void lbEliminarProductosSeleccionados_Click(object sender, EventArgs e)
         {
-
+            Session["ProductosSeleccionados"] = null;
         }
     }
 }
