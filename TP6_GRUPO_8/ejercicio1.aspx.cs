@@ -41,5 +41,19 @@ namespace TP6_GRUPO_8
             gvProductos.DataSource = gestion.ObtenerTodosLosProductos();
             gvProductos.DataBind();
         }
+
+        protected void gvProductos_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvProductos.EditIndex = e.NewEditIndex;
+            gvProductos.DataSource = new GestionProductos().ObtenerTodosLosProductos();
+            gvProductos.DataBind();
+        }
+
+        protected void gvProductos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            gvProductos.EditIndex = -1;
+            gvProductos.DataSource = new GestionProductos().ObtenerTodosLosProductos();
+            gvProductos.DataBind();
+        }
     }
 }

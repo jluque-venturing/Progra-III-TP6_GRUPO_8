@@ -12,7 +12,7 @@ namespace TP6_GRUPO_8
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void lbEliminarProductosSeleccionados_Click(object sender, EventArgs e)
