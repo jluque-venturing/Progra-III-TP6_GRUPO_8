@@ -8,7 +8,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h2>Productos Seleccionados</h2>
+            <h2>Productos Seleccionados por el Usuario:</h2>
             
             <asp:GridView ID="gvMostrar" runat="server" AutoGenerateColumns="True" OnSelectedIndexChanged="gvMostrar_SelectedIndexChanged">
             </asp:GridView>

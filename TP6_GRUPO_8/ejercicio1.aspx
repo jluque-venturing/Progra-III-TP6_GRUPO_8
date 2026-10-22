@@ -10,9 +10,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <h1>Productos</h1>
             <asp:GridView ID="gvProductos" runat="server" AutoGenerateColumns="False" AllowPaging="True" PageSize="10" OnPageIndexChanging="gvProductos_PageIndexChanging" OnRowDeleting="gvProductos_RowDeleting" OnRowCancelingEdit="gvProductos_RowCancelingEdit" OnRowEditing="gvProductos_RowEditing" OnRowUpdating="gvProductos_RowUpdating">
                 <Columns>
-                   <asp:CommandField ShowDeleteButton="True" DeleteText="Delete " ShowEditButton="True" EditText="Edit" CancelText="Cancel" UpdateText="Update" />
+                   <asp:CommandField ShowDeleteButton="True" DeleteText="Delete " ShowEditButton="True" EditText="Edit" CancelText="Cancel" UpdateText="Update" ValidationGroup="EditarProducto" />
                     <asp:TemplateField HeaderText="Id Producto">                        
                         <ItemTemplate>
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("IdProducto") %>'></asp:Label>
@@ -27,7 +28,8 @@
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("NombreProducto") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtEditNombre" runat="server" Text='<%# Bind("NombreProducto") %>'></asp:TextBox>
+                            <asp:TextBox ID="txtEditNombre" runat="server" MaxLength="40" Text='<%# Bind("NombreProducto") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ControlToValidate="txtEditNombre" ValidationGroup="EditarProducto" ForeColor="Red" Display="Dynamic" ErrorMessage="Ingrese un nombre"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                     </asp:TemplateField>
                     
@@ -36,7 +38,8 @@
                             <asp:Label ID="Label3" runat="server" Text='<%# Bind("CantidadPorUnidad") %>'></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtEditCantidad" runat="server" Text='<%# Bind("CantidadPorUnidad") %>'></asp:TextBox>
+                            <asp:TextBox ID="txtEditCantidad" runat="server" MaxLength="20" Text='<%# Bind("CantidadPorUnidad") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvCantidad" runat="server" ControlToValidate="txtEditCantidad" ValidationGroup="EditarProducto" ForeColor="Red" Display="Dynamic" ErrorMessage="Ingrese la cantidad por unidad"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                     </asp:TemplateField>
                     
@@ -46,6 +49,8 @@
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox ID="txtEditPrecio" runat="server" Text='<%# Bind("PrecioUnidad") %>'></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvPrecio" runat="server" ControlToValidate="txtEditPrecio" ValidationGroup="EditarProducto" ForeColor="Red" Display="Dynamic" ErrorMessage="Ingrese un precio"></asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="cvPrecio" runat="server" ControlToValidate="txtEditPrecio" ValidationGroup="EditarProducto" ForeColor="Red" Display="Dynamic" Operator="GreaterThanEqual" ValueToCompare="0" Type="Double" ErrorMessage="Ingrese un precio numérico mayor o igual a 0"></asp:CompareValidator>
                         </EditItemTemplate>
                     </asp:TemplateField>
                 </Columns>

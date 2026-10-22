@@ -10,7 +10,7 @@ namespace TP6_GRUPO_8.Conexion
 
     public AccesoDatos()
         {
-            CadenaConexion = @"Data Source=.\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
+            CadenaConexion = "Data Source=localhost\\sqlexpress; Initial Catalog=Neptuno; Integrated Security=True";
         }
 
         public SqlConnection ObtenerConexion()

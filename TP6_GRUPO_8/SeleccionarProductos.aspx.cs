@@ -91,23 +91,8 @@ namespace TP6_GRUPO_8
                 if (Convert.ToInt32(registro["IdProducto"]) == idProducto)
                 {
                     lblAgregados.Text = "El producto ya fue seleccionado: " + nombreProducto;
-                    return;                    break;
-
+                    return;
                 }
-                if (lblAgregados.Text == string.Empty)
-                {
-                    lblAgregados.Text = "Productos agregados: " + nombreProducto;
-                }
-
-                else
-                {
-                    lblAgregados.Text += ", " + nombreProducto;
-                }
-
-
-                tabla = AgregarFila(tabla, idProducto, nombreProducto,idProveedor, precio);
-
-                Session["ProductosSeleccionados"] = tabla;
             }
 
             tabla = AgregarFila(

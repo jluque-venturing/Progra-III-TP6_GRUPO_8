@@ -58,6 +58,13 @@ namespace TP6_GRUPO_8
 
         protected void gvProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            e.Cancel = true;
+
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             GridViewRow fila = gvProductos.Rows[e.RowIndex];
 
             Label lblProducto = (Label)fila.FindControl("lblEditId");
@@ -66,15 +73,18 @@ namespace TP6_GRUPO_8
             TextBox txtPrecio = (TextBox)fila.FindControl("txtEditPrecio");
 
             int idProducto = int.Parse(lblProducto.Text);
-            string nombreProducto = txtNombre.Text;
-            string cantidadPorUnidad = txtCantidad.Text;
-            decimal precioUnidad = decimal.Parse(txtPrecio.Text);
+            string nombreProducto = txtNombre.Text.Trim();
+            string cantidadPorUnidad = txtCantidad.Text.Trim();
+            decimal precioUnidad;
+
+            if (nombreProducto == string.Empty || cantidadPorUnidad == string.Empty || !decimal.TryParse(txtPrecio.Text, out precioUnidad) || precioUnidad < 0)
+            {
+                return;
+            }
 
             GestionProductos gestion = new GestionProductos();
 
             gestion.ActualizarProducto(idProducto, nombreProducto, cantidadPorUnidad, precioUnidad);
-
-            e.Cancel = true;
 
             gvProductos.EditIndex = -1;
             gvProductos.DataSource = gestion.ObtenerTodosLosProductos();

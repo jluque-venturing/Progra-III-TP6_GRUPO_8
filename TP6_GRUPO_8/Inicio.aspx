@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h1>GRUPO N°</h1>
+            <h1>Grupo N° 8</h1>
 
             <p>
                 <asp:HyperLink ID="hlEjercicio1" runat="server" NavigateUrl="~/Ejercicio1.aspx">Ejercicio 1</asp:HyperLink>
