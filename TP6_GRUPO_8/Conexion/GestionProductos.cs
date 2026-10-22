@@ -34,5 +34,20 @@ namespace TP6_GRUPO_8.Conexion
             return filasAfectadas > 0;
 
         }
+
+    public bool ActualizarProducto(int idProducto, string nombreProducto, string cantidadPorUnidad, decimal precioUnidad)
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.Parameters.AddWithValue("@IdProducto", idProducto);
+            comando.Parameters.AddWithValue("@NombreProducto", nombreProducto);
+            comando.Parameters.AddWithValue("@CantidadPorUnidad", cantidadPorUnidad);
+            comando.Parameters.AddWithValue("PrecioUnidad", precioUnidad);
+
+            AccesoDatos datos = new AccesoDatos();
+
+            int filasAfectadas = datos.EjecutarProcedimientoAlmacenado(comando, "SP_ActualizarProducto");
+
+            return filasAfectadas > 0;
+        }
     }
 }

@@ -55,5 +55,30 @@ namespace TP6_GRUPO_8
             gvProductos.DataSource = new GestionProductos().ObtenerTodosLosProductos();
             gvProductos.DataBind();
         }
+
+        protected void gvProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow fila = gvProductos.Rows[e.RowIndex];
+
+            Label lblProducto = (Label)fila.FindControl("lblEditId");
+            TextBox txtNombre = (TextBox)fila.FindControl("txtEditNombre");
+            TextBox txtCantidad = (TextBox)fila.FindControl("txtEditCantidad");
+            TextBox txtPrecio = (TextBox)fila.FindControl("txtEditPrecio");
+
+            int idProducto = int.Parse(lblProducto.Text);
+            string nombreProducto = txtNombre.Text;
+            string cantidadPorUnidad = txtCantidad.Text;
+            decimal precioUnidad = decimal.Parse(txtPrecio.Text);
+
+            GestionProductos gestion = new GestionProductos();
+
+            gestion.ActualizarProducto(idProducto, nombreProducto, cantidadPorUnidad, precioUnidad);
+
+            e.Cancel = true;
+
+            gvProductos.EditIndex = -1;
+            gvProductos.DataSource = gestion.ObtenerTodosLosProductos();
+            gvProductos.DataBind();
+        }
     }
 }
