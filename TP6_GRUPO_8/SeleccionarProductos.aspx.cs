@@ -68,6 +68,9 @@ namespace TP6_GRUPO_8
 
         protected void gvSeleccion_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+           
+
+       
             GridViewRow fila = gvSeleccion.Rows[e.NewSelectedIndex];
 
             int idProducto = int.Parse(((Label)fila.FindControl("lblIdProducto")).Text);
@@ -81,6 +84,31 @@ namespace TP6_GRUPO_8
             }
 
             DataTable tabla = (DataTable)Session["ProductosSeleccionados"];
+
+            foreach (DataRow registro in tabla.Rows)
+            {
+
+                if (Convert.ToInt32(registro["IdProducto"]) == idProducto)
+                {
+                    lblAgregados.Text = "El producto ya fue seleccionado: " + nombreProducto;
+                    return;                    break;
+
+                }
+                if (lblAgregados.Text == string.Empty)
+                {
+                    lblAgregados.Text = "Productos agregados: " + nombreProducto;
+                }
+
+                else
+                {
+                    lblAgregados.Text += ", " + nombreProducto;
+                }
+
+
+                tabla = AgregarFila(tabla, idProducto, nombreProducto,idProveedor, precio);
+
+                Session["ProductosSeleccionados"] = tabla;
+            }
 
             tabla = AgregarFila(
                 tabla,
@@ -99,6 +127,8 @@ namespace TP6_GRUPO_8
             {
                 lblAgregados.Text += ", " + nombreProducto;
             }
+
+          
         }
     }
 }
